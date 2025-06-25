@@ -60,8 +60,25 @@ wheels = [
 ]
 
 [[package]]
+name = "apis-bibsonomy"
+version = "0.13.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "django-autocomplete-light" },
+    { name = "django-crispy-forms" },
+    { name = "djangorestframework" },
+    { name = "jmespath" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ab/cd/994779eb83767894c2779d66fc69b40de0c0acc90141875c515aa563a1de/apis_bibsonomy-0.13.2.tar.gz", hash = "sha256:79b30f60dd9962ac172a76a4ff37e6f81e615d8f7363dc0aa5452b6c8b8a372d", size = 36990 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/21/c3/4e35e9a9d093c57603a8a7db6769b24277a7552e07542db04bc13dec59a2/apis_bibsonomy-0.13.2-py3-none-any.whl", hash = "sha256:c4c149b29149e7effd5c06b8835317c56ec07cf65a323fc706f0ce446c767699", size = 20623 },
+]
+
+[[package]]
 name = "apis-core-rdf"
-version = "0.48.2"
+version = "0.49.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "acdh-arche-assets" },
@@ -82,9 +99,9 @@ dependencies = [
     { name = "rdflib" },
     { name = "tablib" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7c/ab/77121b5d5eb9ba88883d0481560c8a52d46639777663a8a7cb7a37d33abd/apis_core_rdf-0.48.2.tar.gz", hash = "sha256:1b371fb40aea850dc4ccb33eac0215c9df5b76c2bc5c0576a10b655f32557303", size = 3310133 }
+sdist = { url = "https://files.pythonhosted.org/packages/a6/3f/a190fb1bb852a59a871343638e96d86ce6fc8605238311ab8af15b355ca1/apis_core_rdf-0.49.1.tar.gz", hash = "sha256:86029e79e6b2a978501a51faa0ab574e9ae8eba52a9fa60cce25876b4a4f7e5e", size = 3351159 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/01/f0/024331b240a8fa203385abe2b5805d569217777e84b96b106248b5bdc63c/apis_core_rdf-0.48.2-py3-none-any.whl", hash = "sha256:074fe3d6d4c9a21ed8a9ab1dda94782436c963c34f3bfc3d5f45152d8694ad5f", size = 3320411 },
+    { url = "https://files.pythonhosted.org/packages/21/10/290e61e550778f682127927c305ab412f48f752a31239552645e1d4a73a9/apis_core_rdf-0.49.1-py3-none-any.whl", hash = "sha256:7c966547a7e3d8c0992f7fe33275221bc97dffa817b00ecf4e54ff05a93fbd6a", size = 3321491 },
 ]
 
 [[package]]
@@ -93,14 +110,18 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "apis-acdhch-default-settings" },
+    { name = "apis-bibsonomy" },
     { name = "apis-core-rdf" },
+    { name = "django-interval" },
     { name = "psycopg2" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "apis-acdhch-default-settings", specifier = "==2.10.0" },
-    { name = "apis-core-rdf", specifier = "==0.48.2" },
+    { name = "apis-bibsonomy", specifier = ">=0.13.2" },
+    { name = "apis-core-rdf", specifier = "==0.49.1" },
+    { name = "django-interval", specifier = ">=0.5.1" },
     { name = "psycopg2", specifier = ">=2.9.10" },
 ]
 
@@ -316,6 +337,18 @@ wheels = [
 ]
 
 [[package]]
+name = "django-interval"
+version = "0.5.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3c/52/c41baa5edfc0179ca9309846f018ff38b79af2781d2015980a5dc9309781/django_interval-0.5.1.tar.gz", hash = "sha256:8fcba0f178270a7f09a37c665728f53e8d865945bc73440a68a8e624502e9887", size = 9393 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/dc/6a/ea7b83ce41df92c8c5018fc080532dd8f8c225ed56247cbfac3578d76015/django_interval-0.5.1-py3-none-any.whl", hash = "sha256:df532b92c381e79d89dde49023f978f10e6d2f5ff56a91cc5d10abdc2f3fe062", size = 9840 },
+]
+
+[[package]]
 name = "django-model-utils"
 version = "5.0.0"
 source = { registry = "https://pypi.org/simple" }
@@ -516,6 +549,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e1/7e/691d061b7329bc8d54edbf0ec22fbfb2afe61facb681f9aaa9bff7a27d04/inflection-0.5.1.tar.gz", hash = "sha256:1a29730d366e996aaacffb2f1f1cb9593dc38e2ddd30c91250c6dde09ea9b417", size = 15091 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/59/91/aa6bde563e0085a02a435aa99b49ef75b0a4b062635e606dab23ce18d720/inflection-0.5.1-py2.py3-none-any.whl", hash = "sha256:f38b2b640938a4f35ade69ac3d053042959b62a0f1076a5bbaa1b9526605a8a2", size = 9454 },
+]
+
+[[package]]
+name = "jmespath"
+version = "1.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/00/2a/e867e8531cf3e36b41201936b7fa7ba7b5702dbef42922193f05c8976cd6/jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe", size = 25843 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/31/b4/b9b800c45527aadd64d5b442f9b932b00648617eb5d63d2c7a6587b7cafc/jmespath-1.0.1-py3-none-any.whl", hash = "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980", size = 20256 },
 ]
 
 [[package]]

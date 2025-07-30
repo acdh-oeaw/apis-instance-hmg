@@ -49,7 +49,9 @@ class EventCategory(GenericModel, SimpleLabelModel):
 
 class Event(AbstractEntity, DateMixin, VersionMixin):
     label = models.CharField(max_length=1024)
-    category = models.ManyToManyField(EventCategory)
+    category = models.ManyToManyField(
+        EventCategory, blank=True, verbose_name=_("Category")
+    )
 
     background = models.TextField(
         blank=True, verbose_name=_("background")
@@ -144,6 +146,19 @@ class Person(E21_Person, AbstractEntity, GenericModel, VersionMixin):
     class Meta(E21_Person.Meta):
         verbose_name = _("Person")
         verbose_name_plural = _("Persons")
+
+    class GenderChoices(models.TextChoices):
+        MALE = "male", _("male")
+        FEMALE = "female", _("female")
+
+    # we override inherited fields to either disable or adapt them
+    gender = models.CharField(
+        blank=True,
+        choices=GenderChoices,
+        default="",
+        max_length=4096,
+        verbose_name=_("Gender"),
+    )
 
     title = models.ManyToManyField(
         Title, blank=True, max_length=255, verbose_name=_("Title")

@@ -113,7 +113,6 @@ dependencies = [
     { name = "apis-bibsonomy" },
     { name = "apis-core-rdf" },
     { name = "django-interval" },
-    { name = "django-select2" },
     { name = "psycopg2" },
     { name = "tablib", extra = ["xlsx"] },
     { name = "tabulate" },
@@ -125,7 +124,6 @@ requires-dist = [
     { name = "apis-bibsonomy", specifier = ">=0.13.2" },
     { name = "apis-core-rdf", specifier = "==0.49.1" },
     { name = "django-interval", specifier = ">=0.5.1" },
-    { name = "django-select2", specifier = ">=8.4.1" },
     { name = "psycopg2", specifier = ">=2.9.10" },
     { name = "tablib", extras = ["xlsx"], specifier = "==3.8.0" },
     { name = "tabulate", specifier = ">=0.9.0" },
@@ -273,18 +271,6 @@ wheels = [
 ]
 
 [[package]]
-name = "django-appconf"
-version = "1.1.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/61/a9/dcf95ff3fa0620b6818fc02276fbbb8926e7f286039b6d015e56e8b7af39/django-appconf-1.1.0.tar.gz", hash = "sha256:9fcead372f82a0f21ee189434e7ae9c007cbb29af1118c18251720f3d06243e4", size = 15986, upload-time = "2025-02-13T16:09:40.258Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/62/9e/f3a899991e4aaae4b69c1aa187ba4a32e34742475c91eb13010ee7fbe9db/django_appconf-1.1.0-py3-none-any.whl", hash = "sha256:7abd5a163ff57557f216e84d3ce9dac36c37ffce1ab9a044d3d53b7c943dd10f", size = 6389, upload-time = "2025-02-13T16:09:39.133Z" },
-]
-
-[[package]]
 name = "django-auth-ldap"
 version = "5.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -388,19 +374,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/46/56/094e511226b3ae7529748c9e0a4a58718a358f4f782d736df14ccd4cb385/django_removals-1.0.9.tar.gz", hash = "sha256:aa40dbb300166c5e8aafb1223e74b05257768104bdfae02c75aaf3d513003ccf", size = 53368, upload-time = "2025-06-05T05:56:48.562Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/37/da/946a94f6c5b96807152918c254b7f1d6d85b83c3609a0422028c17e94328/django_removals-1.0.9-py2.py3-none-any.whl", hash = "sha256:00fa3efd96592cdb2ee633d87b341a255ed287c72e903f76218fd6f5ebcc701c", size = 6004, upload-time = "2025-06-05T05:56:46.732Z" },
-]
-
-[[package]]
-name = "django-select2"
-version = "8.4.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django" },
-    { name = "django-appconf" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/04/83/f70b4ae4f0b3775a161260c5804cfcaad44f1cce2a94d930324e32fa6750/django_select2-8.4.1.tar.gz", hash = "sha256:e6cdc0ae647b91b1bed610628893d10dea50a96fffba8e83af27f35dd6003572", size = 13320, upload-time = "2025-05-26T12:55:54.693Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/0b/4f/d0b10e456db741f3dd4298752fd588a9c45980e3c6d5424f906e7cb654a0/django_select2-8.4.1-py3-none-any.whl", hash = "sha256:1df5e6788cc032795c1be0f2e2a2ea7a5a1dd89878575217a2c23f25d7301fbf", size = 15469, upload-time = "2025-05-26T12:55:52.816Z" },
 ]
 
 [[package]]

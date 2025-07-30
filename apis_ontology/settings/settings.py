@@ -22,7 +22,6 @@ EXPORT_FORMATS = ("xslx", "json")
 
 EXTRA_APPS = [
     "django.contrib.postgres",
-    "django_select2",
     "django_interval",
     "apis_core.documentation",
 ]

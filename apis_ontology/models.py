@@ -98,7 +98,7 @@ class PlaceCategory(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Place Categories")
 
 
-class Place(E53_Place, AbstractEntity, GenericModel, VersionMixin):
+class Place(E53_Place, AbstractEntity, VersionMixin):
     """
     Model representing a place.
     """
@@ -109,12 +109,10 @@ class Place(E53_Place, AbstractEntity, GenericModel, VersionMixin):
     kind = models.ManyToManyField(
         PlaceCategory,
         blank=True,
-        related_name="places",
-        related_query_name="place",
         verbose_name=_("Kind of Place"),
     )
     address = models.TextField(blank=True, null=True, verbose_name=_("Address"))
-    history = models.TextField(blank=True, null=True, verbose_name=_("History"))
+    place_history = models.TextField(blank=True, null=True, verbose_name=_("History"))
     role_present = models.TextField(
         blank=True, null=True, verbose_name=_("Current role")
     )
@@ -178,7 +176,6 @@ class Bureau(E74_Group, AbstractEntity, GenericModel, VersionMixin):
 
 
 class RelationMixin(DateMixin, Relation, VersionMixin):
-
     notes = models.TextField(blank=True, null=True, verbose_name=_("Notes"))
 
     class Meta:

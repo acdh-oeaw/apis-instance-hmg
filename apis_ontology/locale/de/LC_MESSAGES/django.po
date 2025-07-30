@@ -1,0 +1,287 @@
+# DE Translation strings for apis-instance-hgm
+# Copyright (C) 2025 Austrian Centre for Digital Humanities
+# This file is distributed under the same license as the apis-instance-hgm package.
+# Saranya Balasubramanian <saranya.balasubramanian@oeaw.ac.at>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-30 14:25+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Saranya Balasubramanian <saranya.balasubramanian@oeaw.ac.at>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: apis_ontology/models.py:20
+msgid "Start"
+msgstr "Beginn"
+
+#: apis_ontology/models.py:25
+msgid "End"
+msgstr "Ende"
+
+#: apis_ontology/models.py:46
+msgid "Event category"
+msgstr "Kategorisierung"
+
+#: apis_ontology/models.py:47
+msgid "Event categories"
+msgstr "Kategorisierungen"
+
+#: apis_ontology/models.py:53
+msgid "Category"
+msgstr "Kategorisierung"
+
+#: apis_ontology/models.py:57
+msgid "background"
+msgstr "Hintergrund"
+
+#: apis_ontology/models.py:60 apis_ontology/models.py:179
+msgid "anecdotes"
+msgstr "Anekdoten"
+
+#: apis_ontology/models.py:63
+msgid "Turning point"
+msgstr "Wendepunkte"
+
+#: apis_ontology/models.py:65
+msgid "Decisive moment"
+msgstr "Entscheidende Momente"
+
+#: apis_ontology/models.py:67
+msgid "short term effects"
+msgstr "Kurzfristige Auswirkungen"
+
+#: apis_ontology/models.py:70
+msgid "long term effects"
+msgstr "Langfristige Auswirkungen"
+
+#: apis_ontology/models.py:73
+msgid "changes"
+msgstr "Veränderungen"
+
+#: apis_ontology/models.py:75
+msgid "historical significance"
+msgstr "Historische Bedeutung"
+
+#: apis_ontology/models.py:78
+msgid "interpretation"
+msgstr "Nachwelt"
+
+#: apis_ontology/models.py:81
+msgid "commemoration"
+msgstr "Gedenken"
+
+#: apis_ontology/models.py:85
+msgid "Event"
+msgstr "Ereignis"
+
+#: apis_ontology/models.py:86
+msgid "Events"
+msgstr "Ereignisse"
+
+#: apis_ontology/models.py:99
+msgid "Place Category"
+msgstr "Kategorisierung"
+
+#: apis_ontology/models.py:100
+msgid "Place Categories"
+msgstr "Kategorisierungen"
+
+#: apis_ontology/models.py:108
+msgid "Event Site"
+msgstr "Ereignisort"
+
+#: apis_ontology/models.py:109
+msgid "Memorial Site"
+msgstr "Gedenkstätte"
+
+#: apis_ontology/models.py:110
+msgid "Other names"
+msgstr "Andere Bezeichnungen"
+
+#: apis_ontology/models.py:114
+msgid "Kind of Place"
+msgstr "Art von Ort"
+
+#: apis_ontology/models.py:116
+msgid "Address"
+msgstr "Adresse"
+
+#: apis_ontology/models.py:117
+msgid "History"
+msgstr "Geschichte"
+
+#: apis_ontology/models.py:119
+msgid "Current role"
+msgstr "Derzeitige Funktion"
+
+#: apis_ontology/models.py:121
+msgid "Past roles"
+msgstr "Frühere Funktionen"
+
+#: apis_ontology/models.py:123
+msgid "Origin of name"
+msgstr "Herkunft des Namens"
+
+#: apis_ontology/models.py:127
+msgid "Place"
+msgstr "Ort"
+
+#: apis_ontology/models.py:128
+msgid "Places"
+msgstr "Orte"
+
+#: apis_ontology/models.py:133
+msgid "Label Type"
+msgstr "Art"
+
+#: apis_ontology/models.py:141 apis_ontology/models.py:142
+#: apis_ontology/models.py:170
+msgid "Honours"
+msgstr "Ehrungen"
+
+#: apis_ontology/models.py:147
+msgid "Person"
+msgstr "Person"
+
+#: apis_ontology/models.py:148
+msgid "Persons"
+msgstr "Personen"
+
+#: apis_ontology/models.py:151
+msgid "male"
+msgstr "Männlich"
+
+#: apis_ontology/models.py:152
+msgid "female"
+msgstr "Weiblich"
+
+#: apis_ontology/models.py:160
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: apis_ontology/models.py:164
+msgid "Title"
+msgstr "Titel"
+
+#: apis_ontology/models.py:167
+msgid "Qualification"
+msgstr "Ausbildung"
+
+#: apis_ontology/models.py:169
+msgid "Career"
+msgstr "Berufliche Laufbahn"
+
+#: apis_ontology/models.py:172
+msgid "Controversies"
+msgstr "Vorkommnisse"
+
+#: apis_ontology/models.py:175
+msgid "achievements"
+msgstr "Besondere Leistungen"
+
+#: apis_ontology/models.py:189
+msgid "Bureau"
+msgstr "Dienststelle"
+
+#: apis_ontology/models.py:190
+msgid "Bureaus"
+msgstr "Dienststellen"
+
+#: apis_ontology/models.py:194
+msgid "Notes"
+msgstr "Anmerkungen"
+
+#: apis_ontology/models.py:211
+msgid "occurred at"
+msgstr "stattfand in"
+
+#: apis_ontology/models.py:215
+msgid "place of occurence of"
+msgstr "Ort des Ereignisses"
+
+#: apis_ontology/models.py:228
+msgid "born in"
+msgstr "geboren in"
+
+#: apis_ontology/models.py:232
+msgid "place of birth of"
+msgstr "Geburtsort von"
+
+#: apis_ontology/models.py:245
+msgid "parent of"
+msgstr "Elternteil von"
+
+#: apis_ontology/models.py:249
+msgid "child of"
+msgstr "Kind von"
+
+#: apis_ontology/models.py:262 apis_ontology/models.py:266
+msgid "sibling of"
+msgstr "Geschwister von"
+
+#: apis_ontology/models.py:279 apis_ontology/models.py:283
+msgid "partner of"
+msgstr "Partner/in von"
+
+
+#: apis_ontology/models.py:312
+msgid "died in"
+msgstr "verstorben in"
+
+#: apis_ontology/models.py:316
+msgid "place of death of"
+msgstr "Todesort von"
+
+#: apis_ontology/models.py:329 apis_ontology/models.py:363
+msgid "active at"
+msgstr "tätig in"
+
+#: apis_ontology/models.py:333 apis_ontology/models.py:367
+msgid "place of activity of"
+msgstr "Tätigkeitsort von"
+
+#: apis_ontology/models.py:346
+msgid "participated in"
+msgstr "teilgenommen an"
+
+#: apis_ontology/models.py:350
+msgid "included as participant"
+msgstr "eingeschlossen als Teilnehmer"
+
+#: apis_ontology/models.py:378
+msgid "worked for"
+msgstr "arbeitete für"
+
+#: apis_ontology/models.py:382
+msgid "employed by"
+msgstr "angestellt bei"
+
+#: apis_ontology/models.py:397
+msgid "Position"
+msgstr "Position"
+
+#: apis_ontology/models.py:401
+msgid "is an important moment in"
+msgstr "ist ein wichtiger Moment in"
+
+#: apis_ontology/models.py:405
+msgid "contains the moment"
+msgstr "enthält den Moment"
+
+#: apis_ontology/models.py:418
+msgid "is relevant to"
+msgstr "ist relevant für"
+
+#: apis_ontology/models.py:422
+msgid "is relevant for"
+msgstr "ist relevant für"
+
+#: apis_ontology/models.py:297 apis_ontology/models.py:301
+msgid "related to"
+msgstr "Verwandter von"

@@ -35,3 +35,11 @@ DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap5-responsive.html"
 DJANGO_TABLES2_TABLE_ATTRS = {
     "class": "table table-striped table-hover",
 }
+
+LANGUAGE_CODE = "de"  # or your default
+LANGUAGES = [
+    ("en", "English"),
+    ("de", "German"),
+]
+
+LOCALE_PATHS = [BASE_DIR / "locale"]

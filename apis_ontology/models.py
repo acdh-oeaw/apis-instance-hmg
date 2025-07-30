@@ -415,7 +415,7 @@ class EventInvolvedBureau(RelationMixin):
 
     @classmethod
     def name(cls):
-        return _("is relavant to")
+        return _("is relevant to")
 
     @classmethod
     def reverse_name(self):

@@ -34,13 +34,15 @@ wheels = [
 
 [[package]]
 name = "apis-acdhch-default-settings"
-version = "2.10.0"
+version = "2.11.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "apis-acdhch-django-auditlog" },
     { name = "apis-core-rdf" },
     { name = "dj-database-url" },
     { name = "django" },
     { name = "django-allow-cidr" },
+    { name = "django-auditlog" },
     { name = "django-auth-ldap" },
     { name = "django-csp" },
     { name = "django-removals" },
@@ -54,9 +56,22 @@ dependencies = [
     { name = "requests" },
     { name = "whitenoise" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/fa/c4/23e3fd2f7096d5d5dfa5728a9b7d6281925d93dc2a2e5b69edd2ac0d6134/apis_acdhch_default_settings-2.10.0.tar.gz", hash = "sha256:e904a54471c166441d1e8d09b4bfb52fd204fb46534ce61a210bc7f1da21f4f0", size = 13547, upload-time = "2025-06-10T14:48:53.835Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/79/21/71d7589da1410564b5d4884fa038057a518c4cb837704873d407424b627a/apis_acdhch_default_settings-2.11.0.tar.gz", hash = "sha256:617f4c44b8427022e674b4dea5d8e6b5742a97847f1d2c38157b239182a406a9", size = 14057, upload-time = "2025-06-26T08:25:17.242Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/81/79f10dda997871e2f4c4ebd3c37d6c3c1e9c1edbf3d3077ba6b43264bc0c/apis_acdhch_default_settings-2.10.0-py3-none-any.whl", hash = "sha256:8204d6b5c5ec8b3c3bcd47dc524ebf280f8954ce0e0e882b558ef46f8214c9c6", size = 10061, upload-time = "2025-06-10T14:48:52.209Z" },
+    { url = "https://files.pythonhosted.org/packages/01/fa/a4014b0e13e78db10b61c7a767cc23a77b1df7fa8fe2d53b1316747c0c6e/apis_acdhch_default_settings-2.11.0-py3-none-any.whl", hash = "sha256:921adc977879ad82a95055fed261f015c256c3cde3a4fee44336cd825f080e3f", size = 10737, upload-time = "2025-06-26T08:25:15.839Z" },
+]
+
+[[package]]
+name = "apis-acdhch-django-auditlog"
+version = "0.2.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "django-auditlog" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/1a/9f/5457b3f8617aff15796037b569f3078bd84d581ca40984facbce41fa95cb/apis_acdhch_django_auditlog-0.2.1.tar.gz", hash = "sha256:513f2a54dee0fbd8bf09ae0a66652a6e2749dfced9c32a109946325a96f4f21a", size = 20415, upload-time = "2025-05-14T10:53:43.085Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bb/47/737764829ff45a04e319095d9987d6825cc4f0fe1b28435a476bd04e7ede/apis_acdhch_django_auditlog-0.2.1-py3-none-any.whl", hash = "sha256:73b09c53c61474285182de62667b6d28f6f4ea6356d36e8782c4af0a65fa8552", size = 4585, upload-time = "2025-05-14T10:53:41.702Z" },
 ]
 
 [[package]]
@@ -78,7 +93,7 @@ wheels = [
 
 [[package]]
 name = "apis-core-rdf"
-version = "0.49.1"
+version = "0.50.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "acdh-arche-assets" },
@@ -99,9 +114,9 @@ dependencies = [
     { name = "rdflib" },
     { name = "tablib" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a6/3f/a190fb1bb852a59a871343638e96d86ce6fc8605238311ab8af15b355ca1/apis_core_rdf-0.49.1.tar.gz", hash = "sha256:86029e79e6b2a978501a51faa0ab574e9ae8eba52a9fa60cce25876b4a4f7e5e", size = 3351159, upload-time = "2025-06-25T10:01:45.005Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/84/b7/d6fa7c66bfd66ef91991b58aa5ad52f30a0e0212b88ed3db88480a045684/apis_core_rdf-0.50.0.tar.gz", hash = "sha256:0e542e785df226f24ec6e160390a30c7a376cf03ab34e73c49d0e4f5311edcc3", size = 3356413, upload-time = "2025-07-29T07:10:10.19Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/21/10/290e61e550778f682127927c305ab412f48f752a31239552645e1d4a73a9/apis_core_rdf-0.49.1-py3-none-any.whl", hash = "sha256:7c966547a7e3d8c0992f7fe33275221bc97dffa817b00ecf4e54ff05a93fbd6a", size = 3321491, upload-time = "2025-06-25T10:01:42.312Z" },
+    { url = "https://files.pythonhosted.org/packages/7d/e1/2af581d687d39e4a9d008ce6eb1b8a79f22e9d6fc8aff6b6a34df0925c45/apis_core_rdf-0.50.0-py3-none-any.whl", hash = "sha256:4364d1934fba05b6c24011a2351355f51737baa7d5a17a802eb6634c1efdf2bd", size = 3324314, upload-time = "2025-07-29T07:10:07.946Z" },
 ]
 
 [[package]]
@@ -120,9 +135,9 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "apis-acdhch-default-settings", specifier = "==2.10.0" },
+    { name = "apis-acdhch-default-settings", specifier = "==2.11.0" },
     { name = "apis-bibsonomy", specifier = ">=0.13.2" },
-    { name = "apis-core-rdf", specifier = "==0.49.1" },
+    { name = "apis-core-rdf", specifier = "==0.50.0" },
     { name = "django-interval", specifier = ">=0.5.1" },
     { name = "psycopg2", specifier = ">=2.9.10" },
     { name = "tablib", extras = ["xlsx"], specifier = "==3.8.0" },
@@ -268,6 +283,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/2c/7f/98dd15aeed94160ef25f41bdaf363a7cf5904ca469f3dda50d56558220c3/django-allow-cidr-0.7.1.tar.gz", hash = "sha256:382c5d7a9807279e3e96e4f4892b59163a2b30128c596902bf5f80e133e1ccbb", size = 6958, upload-time = "2023-07-10T13:34:56.618Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b1/12/9b55a90a9a092a0c3a8d7aecdb5e18d9148cf6ce64aa3c3c762f533b0995/django_allow_cidr-0.7.1-py2.py3-none-any.whl", hash = "sha256:11126c5bb9df3a61ff9d97304856ba7e5b26d46c6d456709a6d9e28483bff47f", size = 4965, upload-time = "2023-07-10T13:34:54.965Z" },
+]
+
+[[package]]
+name = "django-auditlog"
+version = "3.2.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "python-dateutil" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e1/46/9da1d94493832fa18d2f6324a76d387fa232001593866987a96047709f4e/django_auditlog-3.2.1.tar.gz", hash = "sha256:63a4c9f7793e94eed804bc31a04d9b0b58244b1d280e2ed273c8b406bff1f779", size = 72926, upload-time = "2025-07-03T20:08:17.734Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a7/06/67296d050a72dcd76f57f220df621cb27e5b9282ba7ad0f5f74870dce241/django_auditlog-3.2.1-py3-none-any.whl", hash = "sha256:99603ca9d015f7e9b062b1c34f3e0826a3ce6ae6e5950c81bb7e663f7802a899", size = 38330, upload-time = "2025-07-03T20:07:51.735Z" },
 ]
 
 [[package]]
@@ -931,6 +959,18 @@ wheels = [
 ]
 
 [[package]]
+name = "python-dateutil"
+version = "2.9.0.post0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/66/c0/0c8b6ad9f17a802ee498c46e004a0eb49bc148f2fd230864601a86dcf6db/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3", size = 342432, upload-time = "2024-03-01T18:36:20.211Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427", size = 229892, upload-time = "2024-03-01T18:36:18.57Z" },
+]
+
+[[package]]
 name = "python-ldap"
 version = "3.4.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1088,6 +1128,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/7a/60/84f821f6bf4e0e710acc5039d91f8f594fae0d93fc368704920d8971680d/rpds_py-0.25.1-pp311-pypy311_pp73-musllinux_1_2_aarch64.whl", hash = "sha256:33358883a4490287e67a2c391dfaea4d9359860281db3292b6886bf0be3d8692", size = 564534, upload-time = "2025-05-21T12:45:42.672Z" },
     { url = "https://files.pythonhosted.org/packages/41/3a/bc654eb15d3b38f9330fe0f545016ba154d89cdabc6177b0295910cd0ebe/rpds_py-0.25.1-pp311-pypy311_pp73-musllinux_1_2_i686.whl", hash = "sha256:1d1fadd539298e70cac2f2cb36f5b8a65f742b9b9f1014dd4ea1f7785e2470bf", size = 592674, upload-time = "2025-05-21T12:45:44.533Z" },
     { url = "https://files.pythonhosted.org/packages/2e/ba/31239736f29e4dfc7a58a45955c5db852864c306131fd6320aea214d5437/rpds_py-0.25.1-pp311-pypy311_pp73-musllinux_1_2_x86_64.whl", hash = "sha256:9a46c2fb2545e21181445515960006e85d22025bd2fe6db23e76daec6eb689fe", size = 558781, upload-time = "2025-05-21T12:45:46.281Z" },
+]
+
+[[package]]
+name = "six"
+version = "1.17.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
 ]
 
 [[package]]

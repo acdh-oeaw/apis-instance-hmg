@@ -3,15 +3,15 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 DEBUG = True
-APIS_BASE_URI = "https://hgm.acdh-dev.oeaw.ac.at/"
+APIS_BASE_URI = "https://hmg.acdh-dev.oeaw.ac.at/"
 ROOT_URLCONF = "apis_ontology.urls"
 
 MIDDLEWARE += [
     "simple_history.middleware.HistoryRequestMiddleware",
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "https://hgm.acdh.oeaw.ac.at",
-    "https://hgm.acdh-dev.oeaw.ac.at",
+    "https://hmg.acdh.oeaw.ac.at",
+    "https://hmg.acdh-dev.oeaw.ac.at",
 ]
 if DEBUG:
     INTERNAL_IPS = [

@@ -8,14 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-30 14:25+0000\n"
+"POT-Creation-Date: 2025-07-31 09:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Saranya Balasubramanian <saranya.balasubramanian@oeaw.ac.at>\n"
+"Last-Translator: Saranya Balasubramanian <saranya.balasubramanian@oeaw.ac."
+"at>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: apis_ontology/models.py:20
 msgid "Start"
 msgstr "Beginn"
@@ -26,11 +28,11 @@ msgstr "Ende"
 
 #: apis_ontology/models.py:46
 msgid "Event category"
-msgstr "Kategorisierung"
+msgstr "Kategorisierung (Ereignisse)"
 
 #: apis_ontology/models.py:47
 msgid "Event categories"
-msgstr "Kategorisierungen"
+msgstr "Kategorisierungen (Ereignisse)"
 
 #: apis_ontology/models.py:53
 msgid "Category"
@@ -40,7 +42,7 @@ msgstr "Kategorisierung"
 msgid "background"
 msgstr "Hintergrund"
 
-#: apis_ontology/models.py:60 apis_ontology/models.py:179
+#: apis_ontology/models.py:60 apis_ontology/models.py:182
 msgid "anecdotes"
 msgstr "Anekdoten"
 
@@ -86,11 +88,11 @@ msgstr "Ereignisse"
 
 #: apis_ontology/models.py:99
 msgid "Place Category"
-msgstr "Kategorisierung"
+msgstr "Kategorisierung (Orte)"
 
 #: apis_ontology/models.py:100
 msgid "Place Categories"
-msgstr "Kategorisierungen"
+msgstr "Kategorisierungen (Orte)"
 
 #: apis_ontology/models.py:108
 msgid "Event Site"
@@ -140,148 +142,151 @@ msgstr "Orte"
 msgid "Label Type"
 msgstr "Art"
 
-#: apis_ontology/models.py:141 apis_ontology/models.py:142
-#: apis_ontology/models.py:170
+#: apis_ontology/models.py:136
+msgid "Abbreviation"
+msgstr "Abkürzung"
+
+#: apis_ontology/models.py:144 apis_ontology/models.py:145
+#: apis_ontology/models.py:173
 msgid "Honours"
 msgstr "Ehrungen"
 
-#: apis_ontology/models.py:147
+#: apis_ontology/models.py:150
 msgid "Person"
 msgstr "Person"
 
-#: apis_ontology/models.py:148
+#: apis_ontology/models.py:151
 msgid "Persons"
 msgstr "Personen"
 
-#: apis_ontology/models.py:151
+#: apis_ontology/models.py:154
 msgid "male"
 msgstr "Männlich"
 
-#: apis_ontology/models.py:152
+#: apis_ontology/models.py:155
 msgid "female"
 msgstr "Weiblich"
 
-#: apis_ontology/models.py:160
+#: apis_ontology/models.py:163
 msgid "Gender"
 msgstr "Geschlecht"
 
-#: apis_ontology/models.py:164
+#: apis_ontology/models.py:167
 msgid "Title"
 msgstr "Titel"
 
-#: apis_ontology/models.py:167
+#: apis_ontology/models.py:170
 msgid "Qualification"
 msgstr "Ausbildung"
 
-#: apis_ontology/models.py:169
+#: apis_ontology/models.py:172
 msgid "Career"
 msgstr "Berufliche Laufbahn"
 
-#: apis_ontology/models.py:172
+#: apis_ontology/models.py:175
 msgid "Controversies"
 msgstr "Vorkommnisse"
 
-#: apis_ontology/models.py:175
+#: apis_ontology/models.py:178
 msgid "achievements"
 msgstr "Besondere Leistungen"
 
-#: apis_ontology/models.py:189
+#: apis_ontology/models.py:192
 msgid "Bureau"
 msgstr "Dienststelle"
 
-#: apis_ontology/models.py:190
+#: apis_ontology/models.py:193
 msgid "Bureaus"
 msgstr "Dienststellen"
 
-#: apis_ontology/models.py:194
+#: apis_ontology/models.py:197
 msgid "Notes"
 msgstr "Anmerkungen"
 
-#: apis_ontology/models.py:211
+#: apis_ontology/models.py:214
 msgid "occurred at"
 msgstr "stattfand in"
 
-#: apis_ontology/models.py:215
+#: apis_ontology/models.py:218
 msgid "place of occurence of"
 msgstr "Ort des Ereignisses"
 
-#: apis_ontology/models.py:228
+#: apis_ontology/models.py:231
 msgid "born in"
 msgstr "geboren in"
 
-#: apis_ontology/models.py:232
+#: apis_ontology/models.py:235
 msgid "place of birth of"
 msgstr "Geburtsort von"
 
-#: apis_ontology/models.py:245
+#: apis_ontology/models.py:248
 msgid "parent of"
 msgstr "Elternteil von"
 
-#: apis_ontology/models.py:249
+#: apis_ontology/models.py:252
 msgid "child of"
 msgstr "Kind von"
 
-#: apis_ontology/models.py:262 apis_ontology/models.py:266
+#: apis_ontology/models.py:265 apis_ontology/models.py:269
 msgid "sibling of"
 msgstr "Geschwister von"
 
-#: apis_ontology/models.py:279 apis_ontology/models.py:283
+#: apis_ontology/models.py:282 apis_ontology/models.py:286
 msgid "partner of"
 msgstr "Partner/in von"
 
+#: apis_ontology/models.py:300 apis_ontology/models.py:304
+msgid "related to"
+msgstr "Verwandter von"
 
-#: apis_ontology/models.py:312
+#: apis_ontology/models.py:315
 msgid "died in"
 msgstr "verstorben in"
 
-#: apis_ontology/models.py:316
+#: apis_ontology/models.py:319
 msgid "place of death of"
 msgstr "Todesort von"
 
-#: apis_ontology/models.py:329 apis_ontology/models.py:363
+#: apis_ontology/models.py:332 apis_ontology/models.py:366
 msgid "active at"
 msgstr "tätig in"
 
-#: apis_ontology/models.py:333 apis_ontology/models.py:367
+#: apis_ontology/models.py:336 apis_ontology/models.py:370
 msgid "place of activity of"
 msgstr "Tätigkeitsort von"
 
-#: apis_ontology/models.py:346
+#: apis_ontology/models.py:349
 msgid "participated in"
 msgstr "teilgenommen an"
 
-#: apis_ontology/models.py:350
+#: apis_ontology/models.py:353
 msgid "included as participant"
 msgstr "eingeschlossen als Teilnehmer"
 
-#: apis_ontology/models.py:378
+#: apis_ontology/models.py:381
 msgid "worked for"
 msgstr "arbeitete für"
 
-#: apis_ontology/models.py:382
+#: apis_ontology/models.py:385
 msgid "employed by"
 msgstr "angestellt bei"
 
-#: apis_ontology/models.py:397
+#: apis_ontology/models.py:400
 msgid "Position"
 msgstr "Position"
 
-#: apis_ontology/models.py:401
+#: apis_ontology/models.py:404
 msgid "is an important moment in"
 msgstr "ist ein wichtiger Moment in"
 
-#: apis_ontology/models.py:405
+#: apis_ontology/models.py:408
 msgid "contains the moment"
 msgstr "enthält den Moment"
 
-#: apis_ontology/models.py:418
+#: apis_ontology/models.py:421
 msgid "is relevant to"
 msgstr "ist relevant für"
 
-#: apis_ontology/models.py:422
+#: apis_ontology/models.py:425
 msgid "is relevant for"
 msgstr "ist relevant für"
-
-#: apis_ontology/models.py:297 apis_ontology/models.py:301
-msgid "related to"
-msgstr "Verwandter von"

@@ -132,6 +132,9 @@ class Title(GenericModel, SimpleLabelModel):
     label_type = models.CharField(
         blank=True, null=True, max_length=255, verbose_name=_("Label Type")
     )
+    abbreviation = models.CharField(
+        max_length=255, blank=True, null=True, verbose_name=_("Abbreviation")
+    )
 
 
 class Honours(GenericModel, SimpleLabelModel):

@@ -4,7 +4,7 @@ Initializes the vocabulary for the data model
 
 from django.core.management.base import BaseCommand
 
-from apis_ontology.models import EventCategory, Title
+from apis_ontology.models import EventCategory, Title, PlaceCategory
 
 EVENT_CATEGORIES = [
     "Assistenzeinsatz",
@@ -70,6 +70,21 @@ TITLES = {
     ],
 }
 
+PLACE_TYPES = [
+    "Stadt",
+    "Bundesland",
+    "Bezirk",
+    "Kanton",
+    "Provinz",
+    "Staat",
+    "Kaserne",
+    "Flugplatz",
+    "Kommandogebäude",
+    "Gedenkstätte",
+    "Erinnerungsort",
+    "Gemeinde",
+]
+
 
 class Command(BaseCommand):
     """Populate the vocabulary with initial data"""
@@ -87,5 +102,8 @@ class Command(BaseCommand):
                 Title.objects.get_or_create(
                     label_type=title_group, abbreviation=t[0], label=t[1]
                 )
+
+        for place_type in sorted(PLACE_TYPES):
+            PlaceCategory.objects.get_or_create(label=place_type)
 
         self.stdout.write(self.style.SUCCESS("Vocabulary populated successfully."))

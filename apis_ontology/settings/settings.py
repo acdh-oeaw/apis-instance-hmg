@@ -1,14 +1,12 @@
-from apis_acdhch_default_settings.settings import *  # noqa: F401, F403
 from pathlib import Path
+
+from apis_acdhch_default_settings.settings import *  # noqa: F401, F403
 
 BASE_DIR = Path(__file__).resolve().parent
 DEBUG = False
 APIS_BASE_URI = "https://hmg.acdh-dev.oeaw.ac.at/"
 ROOT_URLCONF = "apis_ontology.urls"
 
-MIDDLEWARE += [
-    "simple_history.middleware.HistoryRequestMiddleware",
-]
 CSRF_TRUSTED_ORIGINS = [
     "https://hmg.acdh.oeaw.ac.at",
     "https://hmg.acdh-dev.oeaw.ac.at",

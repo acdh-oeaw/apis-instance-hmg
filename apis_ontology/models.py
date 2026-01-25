@@ -13,7 +13,19 @@ from django.db import models
 from django_interval.fields import FuzzyDateParserField
 
 
+class Glossar(GenericModel, SimpleLabelModel):
+    definition = models.TextField(blank=True, null=True)
+
+    class Meta(SimpleLabelModel.Meta):
+        verbose_name = _("Glossary")
+        verbose_name_plural = _("Glossary")
+
+
 class EntityMixin(models.Model):
+    glossar_terms = models.ManyToManyField(
+        Glossar, blank=True, verbose_name=_("Glossary terms")
+    )
+
     class Meta:
         abstract = True
 
@@ -200,6 +212,9 @@ class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin)
 
 class RelationMixin(DateMixin, Relation, VersionMixin):
     notes = models.TextField(blank=True, null=True, verbose_name=_("Notes"))
+    glossar_terms = models.ManyToManyField(
+        Glossar, blank=True, verbose_name=_("Glossary terms")
+    )
 
     class Meta:
         abstract = True

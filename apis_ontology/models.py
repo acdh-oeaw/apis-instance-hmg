@@ -13,6 +13,11 @@ from django.db import models
 from django_interval.fields import FuzzyDateParserField
 
 
+class EntityMixin(models.Model):
+    class Meta:
+        abstract = True
+
+
 class DateMixin(models.Model):
     start = FuzzyDateParserField(
         null=True,
@@ -47,7 +52,7 @@ class EventCategory(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Event categories")
 
 
-class Event(AbstractEntity, DateMixin, VersionMixin):
+class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
     label = models.CharField(max_length=1024)
     category = models.ManyToManyField(
         EventCategory, blank=True, verbose_name=_("Category")
@@ -100,7 +105,7 @@ class PlaceCategory(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Place Categories")
 
 
-class Place(E53_Place, AbstractEntity, VersionMixin):
+class Place(EntityMixin, E53_Place, AbstractEntity, VersionMixin):
     """
     Model representing a place.
     """
@@ -145,7 +150,7 @@ class Honours(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Honours")
 
 
-class Person(E21_Person, AbstractEntity, GenericModel, VersionMixin):
+class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin):
     class Meta(E21_Person.Meta):
         verbose_name = _("Person")
         verbose_name_plural = _("Persons")
@@ -183,7 +188,7 @@ class Person(E21_Person, AbstractEntity, GenericModel, VersionMixin):
     )  # anekdoten
 
 
-class Bureau(E74_Group, AbstractEntity, GenericModel, VersionMixin):
+class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin):
     """
     Model representing a bureau or group.
     """

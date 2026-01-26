@@ -104,6 +104,19 @@ class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
         ordering = ["start"]
 
 
+class Insigne(EntityMixin, AbstractEntity, GenericModel, VersionMixin):
+    """
+    Model representing an insignia or badge.
+    """
+
+    label = models.CharField(max_length=255, verbose_name=_("Label"))
+    description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
+
+    class Meta:
+        verbose_name = _("Insigne")
+        verbose_name_plural = _("Insigia")
+
+
 class PlaceCategory(GenericModel, SimpleLabelModel):
     """
     Z. B. Liegenschaft (Kaserne, Flugplatz, Kommandogebäude),
@@ -443,3 +456,37 @@ class EventInvolvedBureau(RelationMixin):
     @classmethod
     def reverse_name(self):
         return _("is relevant for")
+
+
+class InsigneLocatedAtPlace(RelationMixin):
+    """
+    Relation between an insigne and a place where it is located.
+    """
+
+    subj_model = Insigne
+    obj_model = Place
+
+    @classmethod
+    def name(cls):
+        return _("located at")
+
+    @classmethod
+    def reverse_name(self):
+        return _("location of")
+
+
+class InsignePossessedByBureau(RelationMixin):
+    """
+    Relation between an insigne and a bureau that possesses it.
+    """
+
+    subj_model = Insigne
+    obj_model = Bureau
+
+    @classmethod
+    def name(cls):
+        return _("belongs to")
+
+    @classmethod
+    def reverse_name(self):
+        return _("owns")

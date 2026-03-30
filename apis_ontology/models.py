@@ -196,21 +196,10 @@ class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin
     title = models.ManyToManyField(
         Title, blank=True, max_length=255, verbose_name=_("Title")
     )
-    qualification = models.TextField(
-        blank=True, null=True, verbose_name=_("Qualification")
-    )
-    career = models.TextField(blank=True, null=True, verbose_name=_("Career"))
     honours = models.ManyToManyField(blank=True, to=Honours, verbose_name=_("Honours"))
-    controversies = models.TextField(
-        blank=True, null=True, verbose_name=_("Controversies")
+    bionote = models.TextField(
+        blank=True, null=True, verbose_name=_("bionote")
     )
-    achievements = models.TextField(
-        blank=True, null=True, verbose_name=_("achievements")
-    )  # besondere Leistungen
-
-    anecdotes = models.TextField(
-        blank=True, null=True, verbose_name=_("anecdotes")
-    )  # anekdoten
 
 
 class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin):

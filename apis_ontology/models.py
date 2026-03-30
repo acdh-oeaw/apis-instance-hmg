@@ -200,7 +200,9 @@ class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin
     bionote = models.TextField(
         blank=True, null=True, verbose_name=_("bionote")
     )
-
+    attended_military_basic_education = models.BooleanField(
+        default=False, verbose_name=_("Attended military basic education")
+    )
 
 class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin):
     """

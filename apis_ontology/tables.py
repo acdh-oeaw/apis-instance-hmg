@@ -19,3 +19,27 @@ class EntityMixinRelationsTable(GenericTable):
             "edit",
             "delete",
         )
+
+
+class GenericListViewTable(GenericTable):
+    class Meta(GenericTable.Meta):
+        attrs = {
+            "td": {"class": "preserve-linebreaks"},
+        }
+        exclude = ["noduplicate"]
+        sequence = (
+            "id",
+            "desc",
+            "...",
+            "view",
+            "edit",
+            "delete",
+        )
+
+
+class EntityMixinTable(GenericListViewTable):
+    pass
+
+
+class RelationMixinTable(GenericListViewTable):
+    pass

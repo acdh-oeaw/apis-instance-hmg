@@ -1,0 +1,9 @@
+
+body {
+      text-rendering: geometricPrecision;
+}
+
+td.preserve-linebreaks {
+        white-space: pre-wrap;
+    line-break: anywhere;
+}

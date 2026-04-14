@@ -103,6 +103,9 @@ class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
         verbose_name_plural = _("Events")
         ordering = ["start"]
 
+    def __str__(self):
+        return f"{self.label} ({self.pk})"
+
 
 class Insigne(EntityMixin, AbstractEntity, GenericModel, VersionMixin):
     """
@@ -115,6 +118,9 @@ class Insigne(EntityMixin, AbstractEntity, GenericModel, VersionMixin):
     class Meta:
         verbose_name = _("Insigne")
         verbose_name_plural = _("Insigia")
+
+    def __str__(self):
+        return f"{self.label} ({self.pk})"
 
 
 class PlaceCategory(GenericModel, SimpleLabelModel):
@@ -197,12 +203,11 @@ class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin
         Title, blank=True, max_length=255, verbose_name=_("Title")
     )
     honours = models.ManyToManyField(blank=True, to=Honours, verbose_name=_("Honours"))
-    bionote = models.TextField(
-        blank=True, null=True, verbose_name=_("bionote")
-    )
+    bionote = models.TextField(blank=True, null=True, verbose_name=_("bionote"))
     attended_military_basic_education = models.BooleanField(
         default=False, verbose_name=_("Attended military basic education")
     )
+
 
 class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin):
     """

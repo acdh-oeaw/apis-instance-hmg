@@ -181,6 +181,12 @@ class Honours(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Honours")
 
 
+class Nobility(AbstractEntity, GenericModel, SimpleLabelModel, VersionMixin):
+    class Meta(SimpleLabelModel.Meta):
+        verbose_name = _("nobility")
+        verbose_name_plural = _("nobilities")
+
+
 class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin):
     class Meta(E21_Person.Meta):
         verbose_name = _("Person")

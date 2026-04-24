@@ -10,15 +10,8 @@ class EntityMixinRelationsTable(GenericTable):
     notes = tables.Column(accessor="notes")
 
     class Meta(GenericTable.Meta):
-        exclude = ["noduplicate"]
         per_page = 1000
-        sequence = (
-            "desc",
-            "...",
-            "view",
-            "edit",
-            "delete",
-        )
+        sequence = ("desc", "...", "actions")
 
 
 class GenericListViewTable(GenericTable):
@@ -26,14 +19,11 @@ class GenericListViewTable(GenericTable):
         attrs = {
             "td": {"class": "preserve-linebreaks"},
         }
-        exclude = ["noduplicate"]
         sequence = (
             "id",
             "desc",
             "...",
-            "view",
-            "edit",
-            "delete",
+            "actions",
         )
 
 

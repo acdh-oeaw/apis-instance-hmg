@@ -29,7 +29,7 @@ wheels = [
 
 [[package]]
 name = "apis-acdhch-default-settings"
-version = "2.17.0"
+version = "2.18.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "apis-acdhch-django-auditlog" },
@@ -52,9 +52,9 @@ dependencies = [
     { name = "requests" },
     { name = "whitenoise" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/58/91/4ff3fdf8b08550db411ca504ef8d547a46f870d1ab3273673592ee0e8333/apis_acdhch_default_settings-2.17.0.tar.gz", hash = "sha256:9f9ffd9370343b789f3c36d3344f9028c5d482c207728991a2b99f759ad26626", size = 15903, upload-time = "2026-02-04T12:21:30.409Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/e9/75/06fdfabdf534cc8230704dc7276d0c07ab1eb480c4b8c88b25b908c4e711/apis_acdhch_default_settings-2.18.0.tar.gz", hash = "sha256:d23d00d2ec113b71deb76722fece113a2dd53ded5cbc095883cac9f0d2d68f51", size = 16098, upload-time = "2026-02-23T12:18:49.81Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d7/ff/94895e6caca8b684ced6a36468104de463026ae029206dfd53e57fd29c85/apis_acdhch_default_settings-2.17.0-py3-none-any.whl", hash = "sha256:5740817ed807311f753786d07c0af46dd82028e31deffa3ddbabf16ad8ac80f2", size = 11842, upload-time = "2026-02-04T12:21:28.612Z" },
+    { url = "https://files.pythonhosted.org/packages/cd/a1/281b77d4e68302eda36fed6d63c191d05be0c4626f4219298f40dcee03c4/apis_acdhch_default_settings-2.18.0-py3-none-any.whl", hash = "sha256:f0834907e4a49877007b6e89275a7b537397f213d9a116bebe42c119f94f56c2", size = 11997, upload-time = "2026-02-23T12:18:48.626Z" },
 ]
 
 [[package]]
@@ -130,12 +130,12 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "apis-acdhch-default-settings", specifier = "==2.17.0" },
+    { name = "apis-acdhch-default-settings", specifier = "==2.18.0" },
     { name = "apis-bibsonomy", specifier = ">=0.13.2" },
     { name = "apis-core-rdf", specifier = "==0.59.0" },
     { name = "django-interval", specifier = ">=0.5.1" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2" },
-    { name = "tablib", extras = ["xlsx"], specifier = "==3.8.0" },
+    { name = "tablib", extras = ["xlsx"], specifier = "==3.9.0" },
     { name = "tabulate", specifier = ">=0.9.0" },
 ]
 
@@ -1120,11 +1120,11 @@ wheels = [
 
 [[package]]
 name = "tablib"
-version = "3.8.0"
+version = "3.9.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/09/cc/fe19d9c2ac1088794a51fc72f49b7226f88a0361f924fb3d17a9ec80e657/tablib-3.8.0.tar.gz", hash = "sha256:94d8bcdc65a715a0024a6d5b701a5f31e45bd159269e62c73731de79f048db2b", size = 122247, upload-time = "2025-01-22T15:29:27.276Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/11/00/416d2ba54d7d58a7f7c61bf62dfeb48fd553cf49614daf83312f2d2c156e/tablib-3.9.0.tar.gz", hash = "sha256:1b6abd8edb0f35601e04c6161d79660fdcde4abb4a54f66cc9f9054bd55d5fe2", size = 125565, upload-time = "2025-10-15T18:21:56.263Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5c/95/6542f54ebd90539b12ed6189cb54a6550a28407b1c503c2e55190c29a4c9/tablib-3.8.0-py3-none-any.whl", hash = "sha256:35bdb9d4ec7052232f8803908f9c7a9c3c65807188b70618fa7a7d8ccd560b4d", size = 47935, upload-time = "2025-01-22T15:28:44.499Z" },
+    { url = "https://files.pythonhosted.org/packages/66/6b/32e51d847148b299088fc42d3d896845fd09c5247190133ea69dbe71ba51/tablib-3.9.0-py3-none-any.whl", hash = "sha256:eda17cd0d4dda614efc0e710227654c60ddbeb1ca92cdcfc5c3bd1fc5f5a6e4a", size = 49580, upload-time = "2025-10-15T18:21:44.185Z" },
 ]
 
 [package.optional-dependencies]

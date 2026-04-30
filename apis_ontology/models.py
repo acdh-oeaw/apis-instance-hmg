@@ -243,7 +243,22 @@ class RelationMixin(DateMixin, Relation, VersionMixin):
         abstract = True
         ordering = ["pk"]
 
+class PersonHasHonours(RelationMixin):
+    """
+    Relation between a person and an honour they received.
+    """
 
+    subj_model = Person
+    obj_model = HonoursEntity
+
+    @classmethod
+    def name(cls):
+        return _("has honours")
+
+    @classmethod
+    def reverse_name(self):
+        return _("is an honour of")
+        
 class EventOccuredAtPlace(RelationMixin):
     """
     Relation between an event and a place where it occurred.

@@ -65,11 +65,11 @@ class EventCategory(GenericModel, SimpleLabelModel):
 
 
 class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
-    label = models.CharField(max_length=1024)
+    label = models.CharField(max_length=1024, blank=True, null=True, verbose_name=_("Label"))
     category = models.ManyToManyField(
         EventCategory, blank=True, verbose_name=_("Category")
     )
-
+    description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
     background = models.TextField(
         blank=True, verbose_name=_("background")
     )  # Hintergrund
@@ -104,7 +104,23 @@ class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
         ordering = ["start"]
 
     def __str__(self):
-        return f"{self.label} ({self.pk})"
+        label = getattr(self, "label", None)
+        if label:
+            return f"{label} ({self.pk})"
+
+        # Fallback to a textual field if `label` is not available.
+        # Prefer `description` if present, otherwise `background`.
+        desc = (getattr(self, "description", None) or getattr(self, "background", None) or "").strip()
+        if not desc:
+            return f"({self.pk})"
+
+        # Shorten and collapse whitespace, append ellipsis when trimmed.
+        short = " ".join(desc.split())
+        max_len = 50
+        if len(short) > max_len:
+            short = short[:max_len].rstrip() + "…"
+
+        return f"{short} ({self.pk})"
 
 
 class Insigne(EntityMixin, AbstractEntity, GenericModel, VersionMixin):
@@ -208,16 +224,23 @@ class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin
     title = models.ManyToManyField(
         Title, blank=True, max_length=255, verbose_name=_("Title")
     )
-    honours = models.ManyToManyField(blank=True, to=Honours, verbose_name=_("Honours"), editable=False)
+    honours = models.ManyToManyField(
+        blank=True, to=Honours, verbose_name=_("Honours"), editable=False
+    )
     bionote = models.TextField(blank=True, null=True, verbose_name=_("bionote"))
     attended_military_basic_education = models.BooleanField(
         default=False, verbose_name=_("Attended military basic education")
     )
 
-class HonoursEntity(SimpleLabelModel, DateMixin, AbstractEntity, GenericModel, VersionMixin):
+
+class HonoursEntity(
+    SimpleLabelModel, DateMixin, AbstractEntity, GenericModel, VersionMixin
+):
     """Model representing an award or recognition."""
+
     donour = models.ManyToManyField(Person, verbose_name=_("Donour"))
     purpose = models.TextField(blank=True, null=True, verbose_name=_("Purpose"))
+
     class Meta(SimpleLabelModel.Meta):
         verbose_name = _("Honours")
         verbose_name_plural = _("Honours")
@@ -243,6 +266,7 @@ class RelationMixin(DateMixin, Relation, VersionMixin):
         abstract = True
         ordering = ["pk"]
 
+
 class PersonHasHonours(RelationMixin):
     """
     Relation between a person and an honour they received.
@@ -250,7 +274,14 @@ class PersonHasHonours(RelationMixin):
 
     subj_model = Person
     obj_model = HonoursEntity
-    in_relation_to = models.ForeignKey(Event, blank=True, null=True, on_delete=models.SET_NULL, verbose_name=_("In relation to event"))
+    in_relation_to = models.ForeignKey(
+        Event,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name=_("In relation to event"),
+    )
+
     @classmethod
     def name(cls):
         return _("has honours")
@@ -258,6 +289,7 @@ class PersonHasHonours(RelationMixin):
     @classmethod
     def reverse_name(self):
         return _("is an honour of")
+
 
 class EventOccuredAtPlace(RelationMixin):
     """

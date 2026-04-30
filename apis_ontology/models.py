@@ -250,7 +250,7 @@ class PersonHasHonours(RelationMixin):
 
     subj_model = Person
     obj_model = HonoursEntity
-
+    in_relation_to = models.ForeignKey(Event, blank=True, null=True, on_delete=models.SET_NULL, verbose_name=_("In relation to event"))
     @classmethod
     def name(cls):
         return _("has honours")

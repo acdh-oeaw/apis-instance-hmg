@@ -214,6 +214,14 @@ class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin
         default=False, verbose_name=_("Attended military basic education")
     )
 
+class HonoursEntity(SimpleLabelModel, DateMixin, AbstractEntity, GenericModel, VersionMixin):
+    """Model representing an award or recognition."""
+    donour = models.ManyToManyField(Person, verbose_name=_("Donour"))
+    purpose = models.TextField(blank=True, null=True, verbose_name=_("Purpose"))
+    class Meta(SimpleLabelModel.Meta):
+        verbose_name = _("Honours")
+        verbose_name_plural = _("Honours")
+
 
 class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin):
     """

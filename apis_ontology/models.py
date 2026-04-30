@@ -208,7 +208,7 @@ class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin
     title = models.ManyToManyField(
         Title, blank=True, max_length=255, verbose_name=_("Title")
     )
-    honours = models.ManyToManyField(blank=True, to=Honours, verbose_name=_("Honours"))
+    honours = models.ManyToManyField(blank=True, to=Honours, verbose_name=_("Honours"), editable=False)
     bionote = models.TextField(blank=True, null=True, verbose_name=_("bionote"))
     attended_military_basic_education = models.BooleanField(
         default=False, verbose_name=_("Attended military basic education")
@@ -258,7 +258,7 @@ class PersonHasHonours(RelationMixin):
     @classmethod
     def reverse_name(self):
         return _("is an honour of")
-        
+
 class EventOccuredAtPlace(RelationMixin):
     """
     Relation between an event and a place where it occurred.

@@ -1,17 +1,17 @@
 from apis_core.generic.tables import GenericTable
+from apis_core.relations.tables import RelationsListTable
 
 import django_tables2 as tables
 
 
-class EntityMixinRelationsTable(GenericTable):
+class EntityMixinRelationsTable(RelationsListTable):
     start = tables.Column(accessor="start")
     end = tables.Column(accessor="end")
-    # glossary = tables.Column(accessor="glossar_terms")
     notes = tables.Column(accessor="notes")
 
     class Meta(GenericTable.Meta):
         per_page = 1000
-        sequence = ("desc", "...", "actions")
+        sequence = ("relation", "...", "actions")
 
 
 class GenericListViewTable(GenericTable):

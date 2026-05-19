@@ -13,6 +13,23 @@ from django.db import models
 from django_interval.fields import FuzzyDateParserField
 
 
+class Glossar(GenericModel, SimpleLabelModel):
+    definition = models.TextField(blank=True, null=True)
+
+    class Meta(SimpleLabelModel.Meta):
+        verbose_name = _("Glossary")
+        verbose_name_plural = _("Glossary")
+
+
+class EntityMixin(models.Model):
+    glossar_terms = models.ManyToManyField(
+        Glossar, blank=True, verbose_name=_("Glossary terms")
+    )
+
+    class Meta:
+        abstract = True
+
+
 class DateMixin(models.Model):
     start = FuzzyDateParserField(
         null=True,
@@ -47,12 +64,12 @@ class EventCategory(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Event categories")
 
 
-class Event(AbstractEntity, DateMixin, VersionMixin):
-    label = models.CharField(max_length=1024)
+class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
+    label = models.CharField(max_length=1024, blank=True, null=True, verbose_name=_("Label"))
     category = models.ManyToManyField(
         EventCategory, blank=True, verbose_name=_("Category")
     )
-
+    description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
     background = models.TextField(
         blank=True, verbose_name=_("background")
     )  # Hintergrund
@@ -86,6 +103,41 @@ class Event(AbstractEntity, DateMixin, VersionMixin):
         verbose_name_plural = _("Events")
         ordering = ["start"]
 
+    def __str__(self):
+        label = getattr(self, "label", None)
+        if label:
+            return f"{label} ({self.pk})"
+
+        # Fallback to a textual field if `label` is not available.
+        # Prefer `description` if present, otherwise `background`.
+        desc = (getattr(self, "description", None) or getattr(self, "background", None) or "").strip()
+        if not desc:
+            return f"({self.pk})"
+
+        # Shorten and collapse whitespace, append ellipsis when trimmed.
+        short = " ".join(desc.split())
+        max_len = 50
+        if len(short) > max_len:
+            short = short[:max_len].rstrip() + "…"
+
+        return f"{short} ({self.pk})"
+
+
+class Insigne(EntityMixin, AbstractEntity, GenericModel, VersionMixin):
+    """
+    Model representing an insignia or badge.
+    """
+
+    label = models.CharField(max_length=255, verbose_name=_("Label"))
+    description = models.TextField(blank=True, null=True, verbose_name=_("Description"))
+
+    class Meta:
+        verbose_name = _("Insigne")
+        verbose_name_plural = _("Insigia")
+
+    def __str__(self):
+        return f"{self.label} ({self.pk})"
+
 
 class PlaceCategory(GenericModel, SimpleLabelModel):
     """
@@ -100,7 +152,7 @@ class PlaceCategory(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Place Categories")
 
 
-class Place(E53_Place, AbstractEntity, VersionMixin):
+class Place(EntityMixin, E53_Place, AbstractEntity, VersionMixin):
     """
     Model representing a place.
     """
@@ -145,7 +197,13 @@ class Honours(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Honours")
 
 
-class Person(E21_Person, AbstractEntity, GenericModel, VersionMixin):
+class Nobility(AbstractEntity, GenericModel, SimpleLabelModel, VersionMixin):
+    class Meta(SimpleLabelModel.Meta):
+        verbose_name = _("nobility")
+        verbose_name_plural = _("nobilities")
+
+
+class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin):
     class Meta(E21_Person.Meta):
         verbose_name = _("Person")
         verbose_name_plural = _("Persons")
@@ -166,24 +224,29 @@ class Person(E21_Person, AbstractEntity, GenericModel, VersionMixin):
     title = models.ManyToManyField(
         Title, blank=True, max_length=255, verbose_name=_("Title")
     )
-    qualification = models.TextField(
-        blank=True, null=True, verbose_name=_("Qualification")
+    honours = models.ManyToManyField(
+        blank=True, to=Honours, verbose_name=_("Honours"), editable=False
     )
-    career = models.TextField(blank=True, null=True, verbose_name=_("Career"))
-    honours = models.ManyToManyField(blank=True, to=Honours, verbose_name=_("Honours"))
-    controversies = models.TextField(
-        blank=True, null=True, verbose_name=_("Controversies")
+    bionote = models.TextField(blank=True, null=True, verbose_name=_("bionote"))
+    attended_military_basic_education = models.BooleanField(
+        default=False, verbose_name=_("Attended military basic education")
     )
-    achievements = models.TextField(
-        blank=True, null=True, verbose_name=_("achievements")
-    )  # besondere Leistungen
-
-    anecdotes = models.TextField(
-        blank=True, null=True, verbose_name=_("anecdotes")
-    )  # anekdoten
 
 
-class Bureau(E74_Group, AbstractEntity, GenericModel, VersionMixin):
+class HonoursEntity(
+    SimpleLabelModel, DateMixin, AbstractEntity, GenericModel, VersionMixin
+):
+    """Model representing an award or recognition."""
+
+    donour = models.ManyToManyField(Person, verbose_name=_("Donour"))
+    purpose = models.TextField(blank=True, null=True, verbose_name=_("Purpose"))
+
+    class Meta(SimpleLabelModel.Meta):
+        verbose_name = _("Honours")
+        verbose_name_plural = _("Honours")
+
+
+class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin):
     """
     Model representing a bureau or group.
     """
@@ -195,10 +258,37 @@ class Bureau(E74_Group, AbstractEntity, GenericModel, VersionMixin):
 
 class RelationMixin(DateMixin, Relation, VersionMixin):
     notes = models.TextField(blank=True, null=True, verbose_name=_("Notes"))
+    glossar_terms = models.ManyToManyField(
+        Glossar, blank=True, verbose_name=_("Glossary terms")
+    )
 
     class Meta:
         abstract = True
         ordering = ["pk"]
+
+
+class PersonHasHonours(RelationMixin):
+    """
+    Relation between a person and an honour they received.
+    """
+
+    subj_model = Person
+    obj_model = HonoursEntity
+    in_relation_to = models.ForeignKey(
+        Event,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        verbose_name=_("In relation to event"),
+    )
+
+    @classmethod
+    def name(cls):
+        return _("has honours")
+
+    @classmethod
+    def reverse_name(self):
+        return _("is an honour of")
 
 
 class EventOccuredAtPlace(RelationMixin):
@@ -423,3 +513,37 @@ class EventInvolvedBureau(RelationMixin):
     @classmethod
     def reverse_name(self):
         return _("is relevant for")
+
+
+class InsigneLocatedAtPlace(RelationMixin):
+    """
+    Relation between an insigne and a place where it is located.
+    """
+
+    subj_model = Insigne
+    obj_model = Place
+
+    @classmethod
+    def name(cls):
+        return _("located at")
+
+    @classmethod
+    def reverse_name(self):
+        return _("location of")
+
+
+class InsignePossessedByBureau(RelationMixin):
+    """
+    Relation between an insigne and a bureau that possesses it.
+    """
+
+    subj_model = Insigne
+    obj_model = Bureau
+
+    @classmethod
+    def name(cls):
+        return _("belongs to")
+
+    @classmethod
+    def reverse_name(self):
+        return _("owns")

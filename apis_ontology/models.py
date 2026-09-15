@@ -1,11 +1,12 @@
-from apis_core.apis_entities.abc import (
+from apis_core.entities.abc import (
     E53_Place,
     E21_Person,
     E74_Group,
     SimpleLabelModel,
+    Entity,
+    SimpleLabelEntity,
 )
 from apis_core.apis_entities.models import AbstractEntity
-from apis_core.generic.abc import GenericModel
 from apis_core.history.models import VersionMixin
 from apis_core.relations.models import Relation
 from django.utils.translation import gettext_lazy as _
@@ -13,15 +14,15 @@ from django.db import models
 from django_interval.fields import FuzzyDateParserField
 
 
-class Glossar(GenericModel, SimpleLabelModel):
+class Glossar(SimpleLabelModel):
     definition = models.TextField(blank=True, null=True)
 
-    class Meta(SimpleLabelModel.Meta):
+    class Meta(SimpleLabelModel.Meta):  #
         verbose_name = _("Glossary")
         verbose_name_plural = _("Glossary")
 
 
-class EntityMixin(models.Model):
+class EntityMixin(Entity):
     glossar_terms = models.ManyToManyField(
         Glossar, blank=True, verbose_name=_("Glossary terms")
     )
@@ -46,7 +47,7 @@ class DateMixin(models.Model):
         abstract = True
 
 
-class EventCategory(GenericModel, SimpleLabelModel):
+class EventCategory(SimpleLabelModel):
     """
     Z. B. Einsatz: Assistenzeinsatz, Auslandseinsatz; Konflikte,
     Kriege, Schlachten, Marsch, Geburtstag, Todestag,
@@ -65,7 +66,9 @@ class EventCategory(GenericModel, SimpleLabelModel):
 
 
 class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
-    label = models.CharField(max_length=1024, blank=True, null=True, verbose_name=_("Label"))
+    label = models.CharField(
+        max_length=1024, blank=True, null=True, verbose_name=_("Label")
+    )
     category = models.ManyToManyField(
         EventCategory, blank=True, verbose_name=_("Category")
     )
@@ -110,7 +113,11 @@ class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
 
         # Fallback to a textual field if `label` is not available.
         # Prefer `description` if present, otherwise `background`.
-        desc = (getattr(self, "description", None) or getattr(self, "background", None) or "").strip()
+        desc = (
+            getattr(self, "description", None)
+            or getattr(self, "background", None)
+            or ""
+        ).strip()
         if not desc:
             return f"({self.pk})"
 
@@ -123,7 +130,7 @@ class Event(EntityMixin, AbstractEntity, DateMixin, VersionMixin):
         return f"{short} ({self.pk})"
 
 
-class Insigne(EntityMixin, AbstractEntity, GenericModel, VersionMixin):
+class Insigne(EntityMixin, AbstractEntity, VersionMixin):
     """
     Model representing an insignia or badge.
     """
@@ -139,7 +146,7 @@ class Insigne(EntityMixin, AbstractEntity, GenericModel, VersionMixin):
         return f"{self.label} ({self.pk})"
 
 
-class PlaceCategory(GenericModel, SimpleLabelModel):
+class PlaceCategory(SimpleLabelModel):
     """
     Z. B. Liegenschaft (Kaserne, Flugplatz, Kommandogebäude),
     Gedenkstätte, Erinnerungsort, Gemeinde, Stadt, Bundesland
@@ -180,7 +187,7 @@ class Place(EntityMixin, E53_Place, AbstractEntity, VersionMixin):
         verbose_name_plural = _("Places")
 
 
-class Title(GenericModel, SimpleLabelModel):
+class Title(SimpleLabelModel):
     label_type = models.CharField(
         blank=True, null=True, max_length=255, verbose_name=_("Label Type")
     )
@@ -189,7 +196,7 @@ class Title(GenericModel, SimpleLabelModel):
     )
 
 
-class Honours(GenericModel, SimpleLabelModel):
+class Honours(SimpleLabelEntity):
     """Model representing an award or recognition."""
 
     class Meta(SimpleLabelModel.Meta):
@@ -197,13 +204,13 @@ class Honours(GenericModel, SimpleLabelModel):
         verbose_name_plural = _("Honours")
 
 
-class Nobility(AbstractEntity, GenericModel, SimpleLabelModel, VersionMixin):
+class Nobility(AbstractEntity, SimpleLabelEntity, VersionMixin):
     class Meta(SimpleLabelModel.Meta):
-        verbose_name = _("nobility")
+        verbose_name = _("Nobility")
         verbose_name_plural = _("nobilities")
 
 
-class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin):
+class Person(EntityMixin, E21_Person, AbstractEntity, VersionMixin):
     class Meta(E21_Person.Meta):
         verbose_name = _("Person")
         verbose_name_plural = _("Persons")
@@ -233,9 +240,7 @@ class Person(EntityMixin, E21_Person, AbstractEntity, GenericModel, VersionMixin
     )
 
 
-class HonoursEntity(
-    SimpleLabelModel, DateMixin, AbstractEntity, GenericModel, VersionMixin
-):
+class HonoursEntity(SimpleLabelModel, DateMixin, AbstractEntity, VersionMixin):
     """Model representing an award or recognition."""
 
     donour = models.ManyToManyField(Person, verbose_name=_("Donour"))
@@ -246,7 +251,7 @@ class HonoursEntity(
         verbose_name_plural = _("Honours")
 
 
-class Bureau(EntityMixin, E74_Group, AbstractEntity, GenericModel, VersionMixin):
+class Bureau(EntityMixin, E74_Group, AbstractEntity, VersionMixin):
     """
     Model representing a bureau or group.
     """

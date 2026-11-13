@@ -196,14 +196,6 @@ class Title(SimpleLabelModel):
     )
 
 
-class Honours(SimpleLabelEntity):
-    """Model representing an award or recognition."""
-
-    class Meta(SimpleLabelModel.Meta):
-        verbose_name = _("Honours")
-        verbose_name_plural = _("Honours")
-
-
 class Nobility(AbstractEntity, SimpleLabelEntity, VersionMixin):
     class Meta(SimpleLabelModel.Meta):
         verbose_name = _("Nobility")
@@ -231,16 +223,13 @@ class Person(EntityMixin, E21_Person, AbstractEntity, VersionMixin):
     title = models.ManyToManyField(
         Title, blank=True, max_length=255, verbose_name=_("Title")
     )
-    honours = models.ManyToManyField(
-        blank=True, to=Honours, verbose_name=_("Honours"), editable=False
-    )
     bionote = models.TextField(blank=True, null=True, verbose_name=_("bionote"))
     attended_military_basic_education = models.BooleanField(
         default=False, verbose_name=_("Attended military basic education")
     )
 
 
-class HonoursEntity(SimpleLabelModel, DateMixin, AbstractEntity, VersionMixin):
+class HonoursEntity(Entity, SimpleLabelModel, DateMixin, AbstractEntity, VersionMixin):
     """Model representing an award or recognition."""
 
     donour = models.ManyToManyField(Person, verbose_name=_("Donour"))

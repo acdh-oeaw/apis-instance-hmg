@@ -4,36 +4,17 @@
 {% load static %}
 
 {% block title %}
-    {% if object %}
-        {{ object }}
-    {% else %}
-        He(e)r mit Geschichte
-    {% endif %}
+{% if object %}
+{{ object }}
+{% else %}
+He(e)r mit Geschichte
+{% endif %}
 {% endblock title %}
 {% block styles %}
-    <link href="{% static 'styles/hmg.css' %}" rel="stylesheet" />
-    {{ block.super }}
+<link href="{% static 'styles/hmg.css' %}" rel="stylesheet" />
+{{ block.super }}
 {% endblock styles %}
 
-{% block main-menu %}
-    <li class="nav-item">
-        <a class="navbar-brand d-flex align-items-center mx-0 py-2" href="/">
-            <span class="material-symbols-outlined text-primary">
-                home
-            </span>
-        </a>
-    </li>
-    <li class="nav-item dropdown">
-    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true"
-        aria-expanded="false">
-        {% translate "About" %} <span class="caret" />
-    </a>
-    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="{% url 'apis:documentation' %}">{% translate "Data model" %}</a>
-        </div>
-        </li>
-        {{ block.super }}
-{% endblock main-menu %}
 {% block content %}
 <div class="container my-5">
     <div class="p-5 bg-light rounded-3 shadow">
